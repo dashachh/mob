@@ -4,53 +4,53 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.EditText;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<Visitor> allVisitors = new ArrayList<>();
-    EditText fioText;
-    EditText ageText;
-    EditText timeText;
-    EditText emailText;
+    EditText nameText;
+    EditText surnameText;
+    EditText heightText;
+    EditText weightText;
+    EditText birthYearText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fioText = findViewById(R.id.editTextFio);
-        ageText = findViewById(R.id.editTextAge);
-        timeText = findViewById(R.id.editTextTime);
-        emailText = findViewById(R.id.editTextEmail);
+        nameText = findViewById(R.id.editTextName);
+        surnameText = findViewById(R.id.editTextSurname);
+        heightText = findViewById(R.id.editTextHeight);
+        weightText = findViewById(R.id.editTextWeight);
+        birthYearText = findViewById(R.id.editTextBirthYear);
     }
 
     public void addNewVisitor(View view) {
-        String fio = fioText.getText().toString();
-        String age = ageText.getText().toString();
-        String time = timeText.getText().toString();
-        String email = emailText.getText().toString();
-        if (!fio.isEmpty() && !age.isEmpty()  && !time.isEmpty()  && !email.isEmpty() ) {
+        String name = nameText.getText().toString();
+        String surname = surnameText.getText().toString();
+        String height = heightText.getText().toString();
+        String weight = weightText.getText().toString();
+        String birthYear = birthYearText.getText().toString();
+        if (!name.isEmpty() && !surname.isEmpty()  && !height.isEmpty()  && !weight.isEmpty() && !birthYear.isEmpty()) {
             Visitor newVisitor = new Visitor();
-            newVisitor.setFio(fio);
-            newVisitor.setAge(age);
-            newVisitor.setTime(time);
-            newVisitor.setEmail(email);
+            newVisitor.setName(name);
+            newVisitor.setSurname(surname);
+            newVisitor.setHeight(Integer.valueOf(height));
+            newVisitor.setWeight(Integer.valueOf(weight));
+            newVisitor.setBirthYear(Integer.valueOf(birthYear));
 
             allVisitors.add(newVisitor);
         }
-        fioText.setText("");
-        ageText.setText("");
-        timeText.setText("");
-        emailText.setText("");
+        nameText.setText("");
+        surnameText.setText("");
+        heightText.setText("");
+        weightText.setText("");
+        birthYearText.setText("");
     }
 
     public void getAllVisitors(View view) {

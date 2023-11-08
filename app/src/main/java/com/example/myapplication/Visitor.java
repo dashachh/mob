@@ -1,55 +1,84 @@
 package com.example.myapplication;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import androidx.annotation.NonNull;
-
 import java.io.Serializable;
-import java.time.LocalTime;
+import java.util.Calendar;
 
 public class Visitor implements Serializable {
-    String fio;
-    String age;
-    String time;
-    String email;
+    String name;
+    String surname;
+    Integer height;
+    Integer weight;
+    Integer birthYear;
 
-    public String toString() {
-        return "ФИО: " + this.fio + ";\n" +
-                "Возраст: " + this.age + ";\n" +
-                "Время прибытия: " + this.time + ";\n" +
-                "Электронная почта: " + this.email + ".\n";
+    public String getAllInfo() {
+        return "Имя: " + this.name + ";\n" +
+                "Фамилия: " + this.surname + ";\n" +
+                "Рост: " + this.height + ";\n" +
+                "Вес: " + this.weight + ";\n" +
+                "Год рождения: " + this.birthYear + ".\n";
     }
 
-    public String getFio() {
-        return this.fio;
+    public String getAgeInfo() {
+        return "Имя: " + this.name + ";\n" +
+                "Фамилия: " + this.surname + ";\n" +
+                "Возраст: " + getAge() + ".\n";
     }
 
-    public void setFio(String fio) {
-        this.fio = fio;
+    public String getWeightInfo() {
+        return "Имя: " + this.name + ";\n" +
+                "Фамилия: " + this.surname + ";\n" +
+                "Вес: " + this.getWeight() + ".\n";
     }
 
-    public String getAge() {
-        return this.age;
+    public Integer getAge() {
+        return Calendar.getInstance().get(Calendar.YEAR) - this.birthYear;
     }
 
-    public void setAge(String age) {
-        this.age = age;
+//    public String toString() {
+//        return "Имя: " + this.name + ";\n" +
+//                "Фамилия: " + this.surname + ";\n" +
+//                "Рост: " + this.height + ";\n" +
+//                "Вес: " + this.weight + ";\n" +
+//                "Год рождения: " + this.birthYear + ".\n";
+//    }
+
+    public String getName() {
+        return this.name;
     }
 
-    public String getTime() {
-        return this.time;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public String getSurname() {
+        return this.surname;
     }
 
-    public String getEmail() {
-        return this.email;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public Integer getHeight() {
+        return this.height;
+    }
+
+    public void setHeight(Integer height) {
+        this.height = height;
+    }
+
+    public Integer getWeight() {
+        return this.weight;
+    }
+
+    public void setWeight(Integer weight) {
+        this.weight = weight;
+    }
+
+    public Integer getBirthYear() {
+        return this.birthYear;
+    }
+
+    public void setBirthYear(Integer birthYear) {
+        this.birthYear = birthYear;
     }
 }

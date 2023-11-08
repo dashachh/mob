@@ -2,11 +2,9 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -20,17 +18,32 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        TextView visitorsView = (TextView) findViewById(R.id.visitorsView);
         Intent intent = getIntent();
-        ArrayList<Visitor> allVisitors = (ArrayList<Visitor>) intent.getSerializableExtra("visitors");
-        if (!allVisitors.isEmpty()) {
-            visitorsView.setText(allVisitors.stream().map(Visitor::toString).collect(Collectors.joining("\n")));
-        }
+        allVisitors = (ArrayList<Visitor>) intent.getSerializableExtra("visitors");
     }
 
     public void onRegisterActivity(View view) {
         finish();
-//        Intent intent = new Intent(this, MainActivity.class);
-//        startActivity(intent);
+    }
+
+    public void getAllInfo(View view) {
+        TextView visitorsView = (TextView) findViewById(R.id.visitorsView);
+        if (!allVisitors.isEmpty()) {
+            visitorsView.setText(allVisitors.stream().map(Visitor::getAllInfo).collect(Collectors.joining("\n")));
+        }
+    }
+
+    public void getAgeInfo(View view) {
+        TextView visitorsView = (TextView) findViewById(R.id.visitorsView);
+        if (!allVisitors.isEmpty()) {
+            visitorsView.setText(allVisitors.stream().map(Visitor::getAgeInfo).collect(Collectors.joining("\n")));
+        }
+    }
+
+    public void getWeightInfo(View view) {
+        TextView visitorsView = (TextView) findViewById(R.id.visitorsView);
+        if (!allVisitors.isEmpty()) {
+            visitorsView.setText(allVisitors.stream().map(Visitor::getWeightInfo).collect(Collectors.joining("\n")));
+        }
     }
 }
